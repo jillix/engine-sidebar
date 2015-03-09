@@ -1,0 +1,30 @@
+{
+  "name": "engine-sidebar",
+  "version": "1.0.0",
+  "description": "jQuery.sidebar.js implementation for Engine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "components": {
+      "scripts": [
+        "main.js",
+        "sidebar.js",
+        "/libs/jquery.js"
+      ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jillix/engine-sidebar.git"
+  },
+  "keywords": [
+    "jxengine",
+    "sidebar"
+  ],
+  "author": "jillix <contact@jillix.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jillix/engine-sidebar/issues"
+  },
+  "homepage": "https://github.com/jillix/engine-sidebar"
+}

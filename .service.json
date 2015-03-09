@@ -1,0 +1,9 @@
+{
+    "client": {
+        "methods": {
+            "open": {},
+            "close": {},
+            "toggle": {}
+        }
+    }
+}
