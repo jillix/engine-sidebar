@@ -7,8 +7,8 @@
   },
   "components": {
       "scripts": [
-        "main.js",
-        "sidebar.js",
+        "client/index.js",
+        "client/sidebar.js",
         "/libs/jquery.js"
       ]
   },

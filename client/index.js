@@ -1,6 +1,6 @@
 // Dependencies
 var $ = require("/libs/jquery");
-require("./sidebar")
+require("./libs/sidebar")
 
 /**
  * init
