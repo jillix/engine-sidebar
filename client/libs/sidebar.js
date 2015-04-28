@@ -86,16 +86,15 @@
 
         }, options);
 
-
         /*!
          *  Opens the sidebar
          *  $([jQuery selector]).trigger("sidebar:open");
          * */
-        self.on("sidebar:open", function() {
+        self.on("sidebar:open", function(ev, data) {
             var properties = {};
             properties[settings.side] = 0;
             settings.isClosed = null;
-            self.stop().animate(properties, settings.speed, function() {
+            self.stop().animate(properties, $.extend({}, settings, data).speed, function() {
                 settings.isClosed = false;
                 self.trigger("sidebar:opened");
             });
@@ -106,7 +105,7 @@
          *  Closes the sidebar
          *  $("[jQuery selector]).trigger("sidebar:close");
          * */
-        self.on("sidebar:close", function(callback) {
+        self.on("sidebar:close", function(ev, data) {
             var properties = {};
             if (settings.side === "left" || settings.side === "right") {
                 properties[settings.side] = -self.outerWidth();
@@ -114,7 +113,7 @@
                 properties[settings.side] = -self.outerHeight();
             }
             settings.isClosed = null;
-            self.stop().animate(properties, settings.speed, function() {
+            self.stop().animate(properties, $.extend({}, settings, data).speed, function() {
                 settings.isClosed = true;
                 self.trigger("sidebar:closed");
             });
@@ -124,24 +123,24 @@
          *  Toggles the sidebar
          *  $("[jQuery selector]).trigger("sidebar:toggle");
          * */
-        self.on("sidebar:toggle", function(callback) {
+        self.on("sidebar:toggle", function(ev, data) {
             if (settings.isClosed) {
-                self.trigger("sidebar:open");
+                self.trigger("sidebar:open", [data]);
             } else {
-                self.trigger("sidebar:close");
+                self.trigger("sidebar:close", [data]);
             }
         });
 
         // Close the sidebar
         if (!settings.isClosed && settings.close) {
-            self.hide().trigger("sidebar:close").one("sidebar:closed", function() {
-                $(this).show();
-            });
+            self.trigger("sidebar:close", [{
+                speed: 0
+            }]);
         }
 
         return self;
     };
 
     // Version
-    $.fn.sidebar.version = "3.1.0";
+    $.fn.sidebar.version = "3.2.0";
 })(require("/libs/jquery"));
