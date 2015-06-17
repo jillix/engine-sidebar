@@ -26,4 +26,3 @@ exports.init = function () {
         $(data.sel).trigger("sidebar:" + c);
     };
 });
-
