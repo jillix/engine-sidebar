@@ -5,12 +5,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "components": {
-    "scripts": [
-      "client/index.js",
-      "client/libs/sidebar.js",
-      "/libs/jquery.js"
-    ]
+  "composition": {
+    "client": {
+      "module": [
+        "client/index.js",
+        "client/libs/sidebar.js",
+        "/libs/jquery.js"
+      ]
+    }
   },
   "repository": {
     "type": "git",

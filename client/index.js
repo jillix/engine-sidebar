@@ -10,7 +10,6 @@ require("./libs/sidebar")
  * @return {undefined}
  */
 exports.init = function () {
-
     var conf = this._config;
     conf.selector = conf.selector || ".sidebar[data-side]";
 
@@ -22,7 +21,14 @@ exports.init = function () {
 };
 
 ["open", "close", "toggle"].forEach(function (c) {
-    exports[c] = function (_, data) {
-        $(data.sel).trigger("sidebar:" + c);
+    exports[c] = function (stream) {
+        stream.data(function (err, data) {
+
+            if (err) {
+                return console.error(new Error(err));
+            }
+
+            $(data.sel).trigger("sidebar:" + c);
+        });
     };
 });
