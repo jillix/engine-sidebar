@@ -22,13 +22,13 @@ exports.init = function () {
 
 ["open", "close", "toggle"].forEach(function (c) {
     exports[c] = function (stream) {
-        stream.data(function (err, data) {
-
-            if (err) {
-                return console.error(new Error(err));
-            }
-
+        stream.data(function (data) {
             $(data.sel).trigger("sidebar:" + c);
+        });
+
+        // handle error
+        stream.error(function (err) {
+            return console.error(new Error(err));
         });
     };
 });
